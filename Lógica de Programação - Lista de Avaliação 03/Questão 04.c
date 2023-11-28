@@ -1,0 +1,58 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <locale.h>
+
+// Declaração de constante
+
+#define b 5
+
+int main ( ) {
+    setlocale (LC_ALL, "");
+
+// Declaração de variáveis
+
+    int a;
+    int somaPar = 0, somaGeral = 0;
+    int maior = INT_MIN, menor = INT_MAX;
+    int numero[b], negativo = 0, impar = 0, par = 0;
+    float mediaPar, mediaGeral;
+
+// Solcitando dados
+
+    for (a = 0; a < b; a++) {
+        printf ("Informe o %dº valor: ", a+1);
+        scanf ("%d", &numero[a]);
+
+        if (numero[a] < 0) {
+            negativo++; }
+        
+        if (numero[a] % 2 != 0) {
+            impar++;
+        
+        } else {
+            par++;
+            somaPar+=numero[a]; }
+
+        somaGeral+=numero[a];
+        maior = numero[a] > maior ? numero[a] : maior;
+        menor = numero[a] < menor ? numero[a] : menor;
+    }
+
+// Calculando as médias
+
+    mediaPar = (float)somaPar / par;
+    mediaGeral = (float)somaGeral / b;
+
+// Tela de resultado
+
+system ("cls");
+
+    printf ("Quantidade de números ímpares: %d\n", impar);
+    printf ("Quantidade de números negativos: %d\n", negativo);
+    printf ("Maior número: %d\n", maior);
+    printf ("Menor número: %d\n", menor);
+    printf ("Média de números pares: %.2f\n", mediaPar);
+    printf ("Média total dos números: %.2f\n", mediaGeral);
+
+    return 0;
+}
