@@ -1,6 +1,6 @@
 /* 
-Descrição  : Algoritmo para cadastrar vendas. Cada venda precisa do nome do produto, preço e quantidade.
-Use um menu para o usuário digitar 1 para adicionar uma venda e o 2 para sair e exibir o preço total das vendas e a quantidade total de vendas! (função)
+DescriÃ§Ã£o  : Algoritmo para cadastrar vendas. Cada venda precisa do nome do produto, preÃ§o e quantidade.
+Use um menu para o usuÃ¡rio digitar 1 para adicionar uma venda e o 2 para sair e exibir o preÃ§o total das vendas e a quantidade total de vendas! (funÃ§Ã£o)
 Professor  : Carlos Anderson Santos de Jesus 
 Autor(a)   : Gabriel S. Olavo
 Data atual : 28/11/2023 */
@@ -12,7 +12,7 @@ Data atual : 28/11/2023 */
 int main ( ) {
     setlocale (LC_ALL, "portuguese");
 
-// Declaração de variáveis
+// DeclaraÃ§Ã£o de variÃ¡veis
 
     int b = 0, a;
     int menu;
@@ -25,18 +25,18 @@ int main ( ) {
 
     do {
         printf ("LOJA READY PLAYER ONE! Registro de Vendas do Vendedor\n\n");
-        printf ("Código | Descrição\n");
+        printf ("CÃ³digo | DescriÃ§Ã£o\n");
         printf ("   1   | Adicionar venda\n");
         printf ("   2   | Sair e exibir total de vendas\n\n");
-        printf ("Selecione a opção desejada: ");
+        printf ("Selecione a opÃ§Ã£o desejada: ");
         scanf ("%d", &menu);
 
             switch (menu) {
                 case 1:
                     fflush (stdin);
-                    printf ("\nDigite o nome do %dº produto: ", b+1);
+                    printf ("\nDigite o nome do %dÂº produto: ", b+1);
                     gets (nome_do_Produto[b]);
-                    printf ("Informe o preço do produto: ");
+                    printf ("Informe o preÃ§o do produto: ");
                     scanf ("%f", &preco[b]);
                     
                     preco_Total = preco_Total + preco[b];
@@ -48,29 +48,31 @@ int main ( ) {
                     system ("cls || clear");
                 break;
 
+// Tela de resultado
+                
                 case 2:
                 if (b > 0)  {
                     system ("cls || clear");
                     printf ("LOJA READY PLAYER ONE!! Lista de Vendas\n\n");
                         for (a = 0; a < b; a++) {
-                            printf ("Nome do %dº produto: %s\n", a+1, nome_do_Produto[a]);
-                            printf ("Preço do produto: R$ %.2f\n", preco[a]);
+                            printf ("Nome do %dÂº produto: %s\n", a+1, nome_do_Produto[a]);
+                            printf ("PreÃ§o do produto: R$ %.2f\n", preco[a]);
                             printf ("Quantidade do produto: %d\n", quantidade[a]);
                             printf ("\n");
                         }
                         printf ("Quantidade total de vendas: %d\n", b++);
-                        printf ("Preço total das vendas: R$ %.2f\n", preco_Total);
+                        printf ("PreÃ§o total das vendas: R$ %.2f\n", preco_Total);
                 
                 } else {
                     system ("cls || clear");
-                    printf ("Não há dados para exibir. SELECIONE a 1º opção para adicionar informações de venda(s)!\n\n");
+                    printf ("NÃ£o hÃ¡ dados para exibir. SELECIONE a 1Âº opÃ§Ã£o para adicionar informaÃ§Ãµes de venda(s)!\n\n");
                     menu = 1;
                 break; }
 
                 if (menu != 1 && menu != 2) {
                 default:
                 system ("cls || clear");
-                    printf ("Opção inválida! Escolha novamente\n\n");
+                    printf ("OpÃ§Ã£o invÃ¡lida! Escolha novamente\n\n");
                 break; }
             }
                 
