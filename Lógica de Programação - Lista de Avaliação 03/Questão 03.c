@@ -41,6 +41,8 @@ int main ( ) {
                     system ("cls || clear");
                 break;
 
+// Tela de resultado
+
                 case 2:
                 if (a > 0)  {  
                     system ("cls || clear");
