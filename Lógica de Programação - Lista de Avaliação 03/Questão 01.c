@@ -2,43 +2,71 @@
 #include <stdlib.h>
 #include <locale.h>
 
-// DeclaraÁ„o de constante
+// Declara√ß√£o de constante
 
 #define b 5
 
 int main ( ) {
-    setlocale (LC_ALL, "");
+    setlocale (LC_ALL, "portuguese");
 
-// DeclaraÁ„o de vari·veis
+// Declara√ß√£o de vari√°veis
 
     int a;
     int idade[b];
+    char nome[b][250];
+    float peso[b], altura[b];
     int idade_maxima = INT_MIN, idade_minima = INT_MAX;
     float altura_maxima = INT_MIN, altura_minima = INT_MAX;
     float peso_maximo = INT_MIN, peso_minimo = INT_MAX;
-    float peso[b], altura[b];
-    char nome[b][250];
 
 // Solicitando dados
 
+    printf ("CONCRETE WALL! Centro de Tratamento de Dados\n\n");
     for (a = 0; a < b; a++) {
         fflush (stdin);
-        printf ("Informe o nome da %d™ pessoa: ", a+1);
+        printf ("Informe o nome da %d¬™ pessoa: ", a+1);
         gets (nome[a]);
-        printf ("Informe a idade: ");
-        scanf ("%d", &idade[a]);
-        printf ("Informe o peso: ");
-        scanf ("%f", &peso[a]);
-        printf ("Informe o altura: ");
-        scanf ("%f", &altura[a]);
+
+        do {
+            printf ("Informe a idade: ");
+            scanf ("%d", &idade[a]);
+
+            if (idade[a] <= 0 || idade[a] > 160) {
+                printf ("\nIDADE INV√ÅLIDA! Informe a sua idade real, entre 1 e 160 anos\n\n");}
+
+        } while (idade[a] <= 0 || idade[a] > 160);
+
+        do {
+            printf ("Informe o peso: ");
+            scanf ("%f", &peso[a]);
+
+            if (peso[a] < 10 || peso[a] > 250) {
+                printf ("\nPESO INV√ÅLIDO! Informe a sua peso entre 10Kg e 250Kg\n\n");}
+
+        } while (peso[a] < 10 || peso[a] > 250);
+
+        do {
+            printf ("Informe o altura: ");
+            scanf ("%f", &altura[a]);
+
+            if (altura[a] < 0.80 || altura[a] > 2.20) {
+                printf ("\nALTURA INV√ÅLIDA! Informe a altura entre 80cm e 2,20m\n\n"); }
+
+        } while (altura[a] < 0.80 || altura[a] > 2.20);
 
         printf ("\n");
+
+/* Aplicando a maior e menor idade */
 
         idade_maxima = idade[a] > idade_maxima ? idade[a] : idade_maxima;
         idade_minima = idade[a] < idade_minima ? idade[a] : idade_minima;
 
+/* Aplicando a maior e menor altura */
+
         altura_maxima = altura[a] > altura_maxima ? altura[a] : altura_maxima;
         altura_minima = altura[a] < altura_minima ? altura[a] : altura_minima;
+
+/* Aplicando o maior e menor peso */
 
         peso_maximo = peso[a] > peso_maximo ? peso[a] : peso_maximo;
         peso_minimo = peso[a] < peso_minimo ? peso[a] : peso_minimo;
@@ -48,14 +76,15 @@ int main ( ) {
 
 system ("cls || clear");
 
+    printf ("CONCRETE WALL! Conclus√£o das Informa√ß√µes\n\n");
     for (a = 0; a < b; a++) {
-        printf ("Nome da %d™ pessoa: %s\n", a+1, nome[a]);
+        printf ("Nome da %d¬™ pessoa: %s\n", a+1, nome[a]);
         printf ("Idade da pessoa: %d\n", idade[a]);
         printf ("Peso da pessoa: %.2f\n", peso[a]);
         printf ("Altura da pessoa: %.2f\n", altura[a]);
         printf ("\n");
     }
-
+    printf ("\n");
     printf ("Maior e menor idade: %d e %d\n", idade_maxima, idade_minima);
     printf ("Maior altura e a menor altura: %.2f e %.2f\n", altura_maxima, altura_minima);
     printf ("Maior peso e menor peso: %.2f e %.2f\n", peso_maximo, peso_minimo);
