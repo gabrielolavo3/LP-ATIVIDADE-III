@@ -1,3 +1,10 @@
+/* 
+Descrição  : Ler 5 números inteiros e imprimir: 1- a quantidade de números ímpares; 2 - a quantidade de números negativos; 
+3 - maior e o menor número; 4 - a média de números pares; 5 - a média de números inseridos! (função)
+Professor  : Carlos Anderson Santos de Jesus 
+Autor(a)   : Gabriel S. Olavo
+Data atual : 28/11/2023 */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <locale.h>
