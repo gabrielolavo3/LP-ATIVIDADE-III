@@ -1,3 +1,11 @@
+/* 
+Descrição  : Com vetor e matriz, ler o nome de 5 alunos, suas idades e 3 nota de cada. Ao final, mostra todos os dados dos alunos e a média.
+Também imprimir a situação escolar do aluno: 1 - média igual ou maior que 7: aprovado; 2 - média menor que 7,0 e maior ou igual a 5,0: recuperação; 
+3 - média menor que 5,0: reprovado! (função)
+Professor  : Carlos Anderson Santos de Jesus 
+Autor(a)   : Gabriel S. Olavo
+Data atual : 28/11/2023 */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -31,7 +39,7 @@ int main ( ) {
             if (idade[a] <= 0 || idade[a] >= 95) {
                 printf ("\nIDADE INVÁLIDA! O Colégio Trevor Montblanc aceita alunos com idade de 1 a 95 anos\n\n"); }
 
-        } while (idade[a] <= 0 || idade[a] >= 90);
+        } while (idade[a] <= 0 || idade[a] >= 95);
 
         for (b = 0; b < z; b++) {
             do {
