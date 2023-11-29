@@ -1,3 +1,10 @@
+/* 
+Descrição  : Ler o nome, a idade, o peso e a altura de 5 pessoas com vetor e imprimir esses dados junto com: 1- a maior altura e a menor altura; 
+2 - maior peso e menor peso; 3 - a maior idade e a menor idade! (função)
+Professor  : Carlos Anderson Santos de Jesus 
+Autor(a)   : Gabriel S. Olavo
+Data atual : 28/11/2023 */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <locale.h>
@@ -86,8 +93,8 @@ system ("cls || clear");
     }
     printf ("\n");
     printf ("Maior e menor idade: %d e %d\n", idade_maxima, idade_minima);
-    printf ("Maior altura e a menor altura: %.2f e %.2f\n", altura_maxima, altura_minima);
-    printf ("Maior peso e menor peso: %.2f e %.2f\n", peso_maximo, peso_minimo);
+    printf ("Maior e menor altura: %.2f e %.2f\n", altura_maxima, altura_minima);
+    printf ("Maior e menor peso: %.2f e %.2f\n", peso_maximo, peso_minimo);
     
     return 0;
 }
