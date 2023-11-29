@@ -3,62 +3,83 @@
 #include <string.h>
 #include <locale.h>
 
+// Declaração de constante
+
+#define z 5
+
 int main ( ) {
-    setlocale (LC_ALL, "");
+    setlocale (LC_ALL, "portuguese");
 
 // Declaração de variáveis
 
     int a, b;
-    int idade[3];
-    float notas[3][3], soma = 0, media[3];
-    char nome[3][250], resultado[3][250];
+    int idade[z];
+    float notas[z][z], soma = 0, media[z];
+    char nome[z][250], resultado[z][250];
 
 // Solicitando dados
 
-    for (a = 0; a < 3; a++) {
+    printf ("COLÉGIO TREVOR MONTBLANC! Boletim Online da Turma B5\n\n");
+    for (a = 0; a < z; a++) {
         printf ("Informe o nome do %dº aluno: ", a+1);
         gets (nome[a]);
-        printf ("Informe a idade: ");
-        scanf ("%d", &idade[a]);
 
-        for (b = 0; b < 3; b++) {
-            printf ("Digite a %dª nota: ", b+1);
-            scanf ("%f", &notas[a][b]);
-        soma += notas[a][b];
+        do {
+            printf ("Informe a idade: ");
+            scanf ("%d", &idade[a]);
+
+            if (idade[a] <= 0 || idade[a] >= 95) {
+                printf ("\nIDADE INVÁLIDA! O Colégio Trevor Montblanc aceita alunos com idade de 1 a 95 anos\n\n"); }
+
+        } while (idade[a] <= 0 || idade[a] >= 90);
+
+        for (b = 0; b < z; b++) {
+            do {
+                printf ("Digite a %dª nota: ", b+1);
+                scanf ("%f", &notas[a][b]);
+
+                if (notas[a][b] < 0 || notas[a][b] > 10) {
+                    printf ("\nNOTA INVÁLIDA! Informe a nota entre 0 e 10\n\n"); }
+
+            } while (notas[a][b] < 0 || notas[a][b] > 10);
+            
+            soma += notas[a][b]; 
         }
-        
+
+// Calculando a média das notas
+
         printf ("\n");
         media[a] = soma / b;
         soma = 0;
         fflush (stdin);
 
-// Validando a aprovação
+// Aplicando a situação estudantil de acordo com a média
 
         if (media[a] >= 7) {
             strcpy (resultado[a], "Aprovado!");
-        } 
-        if (media[a] >= 5 && media[a] < 7) {
+        
+        }  else if (media[a] >= 5 && media[a] < 7) {
             strcpy (resultado[a], "Recuperação!");
     
         } else {
             strcpy (resultado[a], "Reprovado!"); }
     }
-
-    
+  
 // Tela de resultado
 
 system ("cls || clear");
 
-    for (a = 0; a < 3; a++) {
+    printf ("COLÉGIO TREVOR MONTBLANC!\nDados Gerais da Turma B5\n\n");
+    for (a = 0; a < z; a++) {
         printf ("Nome do aluno: %s\n", nome[a]);
         printf ("Idade do aluno: %d\n", idade[a]);
 
-        for (b = 0; b < 3; b++) {
+        for (b = 0; b < z; b++) {
             printf ("%dª nota: %.2f\n", b+1, notas[a][b]); 
         }
-            printf ("Média: %2.f\n", media[a]);
-            printf ("Resultado final: %s\n", resultado[a]);
         
+        printf ("Média: %.2f\n", media[a]);
+        printf ("Situação estudantil: %s\n", resultado[a]);
         printf ("\n");
     }
 
