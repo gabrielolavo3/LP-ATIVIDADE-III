@@ -2,14 +2,14 @@
 #include <stdlib.h>
 #include <locale.h>
 
-// DeclaraÁ„o de constante
+// Declara√ß√£o de constante
 
 #define b 5
 
 int main ( ) {
-    setlocale (LC_ALL, "");
+    setlocale (LC_ALL, "portuguese");
 
-// DeclaraÁ„o de vari·veis
+// Declara√ß√£o de vari√°veis
 
     int a;
     int somaPar = 0, somaGeral = 0;
@@ -19,8 +19,9 @@ int main ( ) {
 
 // Solcitando dados
 
+    printf ("CHECK UP! Leitor e Tratador de N√∫meros\n\n");
     for (a = 0; a < b; a++) {
-        printf ("Informe o %d∫ valor: ", a+1);
+        printf ("Informe o %d¬∫ valor: ", a+1);
         scanf ("%d", &numero[a]);
 
         if (numero[a] < 0) {
@@ -33,12 +34,14 @@ int main ( ) {
             par++;
             somaPar+=numero[a]; }
 
+// Aplicando o maior e menor n√∫mero e somando todos os valores
+
         somaGeral+=numero[a];
         maior = numero[a] > maior ? numero[a] : maior;
         menor = numero[a] < menor ? numero[a] : menor;
     }
 
-// Calculando as mÈdias
+// Calculando as m√©dias
 
     mediaPar = (float)somaPar / par;
     mediaGeral = (float)somaGeral / b;
@@ -47,12 +50,13 @@ int main ( ) {
 
 system ("cls");
 
-    printf ("Quantidade de n˙meros Ìmpares: %d\n", impar);
-    printf ("Quantidade de n˙meros negativos: %d\n", negativo);
-    printf ("Maior n˙mero: %d\n", maior);
-    printf ("Menor n˙mero: %d\n", menor);
-    printf ("MÈdia de n˙meros pares: %.2f\n", mediaPar);
-    printf ("MÈdia total dos n˙meros: %.2f\n", mediaGeral);
+    printf ("CHECK UP!\nConclus√£o das Informa√ß√µes\n\n");
+    printf ("Quantidade de n√∫meros √≠mpares: %d\n", impar);
+    printf ("Quantidade de n√∫meros negativos: %d\n", negativo);
+    printf ("Maior n√∫mero: %d\n", maior);
+    printf ("Menor n√∫mero: %d\n", menor);
+    printf ("M√©dia de n√∫meros pares: %.2f\n", mediaPar);
+    printf ("M√©dia total dos n√∫meros: %.2f\n", mediaGeral);
 
     return 0;
 }
