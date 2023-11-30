@@ -38,18 +38,17 @@ int main ( ) {
                     gets (nome_do_Produto[b]);
                     printf ("Informe o preço do produto: ");
                     scanf ("%f", &preco[b]);
-                    
-                    preco_Total = preco_Total + preco[b];
-
                     printf ("Informe a quantidade do produto: ");
                     scanf ("%d", &quantidade[b]);
+                    
+                    preco_Total = preco_Total + preco[b] * quantidade[b];
                     b++;
 
                     system ("cls || clear");
                 break;
 
 // Tela de resultado
-                
+
                 case 2:
                 if (b > 0)  {
                     system ("cls || clear");
