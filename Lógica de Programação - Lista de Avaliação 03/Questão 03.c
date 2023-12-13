@@ -1,72 +1,119 @@
 /* 
-Descrição  : Cadastrar contatos telefônicos em uma agenda, utilizando vetores para armazenar os nomes e números de telefone. 
-Permita que o usuário digite o código 1 para adicionar um contato e 2 para sair e mostrar os contatos cadastrados! (função)
+Descrição  : Criar uma struct que armazena as variáveis nome, preço e quantidade em estoque. Em seguida, desenvolva um menu 
+para facilitar a escolha das opções. Use funções necessárias para calcular o valor total em estoque do produto e para atualizar 
+a quantidade em estoque com base em uma compra! (função)
 Professor  : Carlos Anderson Santos de Jesus 
 Autor(a)   : Gabriel S. Olavo
-Data atual : 28/11/2023 */
+Data atual : 11/12/2023 */
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <locale.h>
+
+// Declaração de constante, funções e struct
+
+#define MAX_CHARACTER 250
+
+struct produto {
+    int quantidade;
+    float preco;
+    char nome[MAX_CHARACTER];
+}; 
+
+void titulo ( ) {
+    system ("cls || clear");
+    printf ("CENTRO LOGÍSTICO FASTLOG! Aquisição de Materiais e Consulta de Estoque\n\n");
+}
+
+int quantidadeProdutos (int quantia) {
+    int quantidade_Estoque = 100;
+    return quantidade_Estoque -= quantia;
+}
+
+float valor_Estoque (float dinheiro, float cifra, int estoque) {
+    return (dinheiro * cifra) * estoque;
+}
 
 int main ( ) {
     setlocale (LC_ALL, "portuguese");
 
-// Declaração de variáveis
+// Declaração de variáveis comuns e de acesso
 
-    int a = 0, x;
-    int menu;
-    char nome[50][250];
-    char telefone[50][250];
+    int opcao, acervo;
+    float montante;
+    struct produto aquisicao;
 
 // Solicitando dados
 
     do {
-        printf ("AGENDA VIRTUAL BOX\n\n");
+    titulo ( );
         printf ("Código | Descrição\n");
-        printf ("   1   | Adicionar contato\n");
-        printf ("   2   | Sair e exibir lista de contatos\n\n");
+        printf ("   1   | Realizar uma compra\n");
+        printf ("   2   | Consultar estoque\n");
+        printf ("   3   | Sair do programa\n\n");
         printf ("Selecione a opção desejada: ");
-        scanf ("%d", &menu);
+        scanf ("%d", &opcao);
 
-            switch (menu) {
-                case 1:
-                    fflush (stdin);
-                    printf ("\nDigite o nome do %dº contato: ", a+1);
-                    gets (nome[a]);
-                    fflush (stdin);
-                    printf ("Informe o número do contato: ");
-                    gets (telefone[a]);
-                    a++;
-                    system ("cls || clear");
-                break;
+        switch (opcao) {
+        case 1:
+            fflush (stdin);
+            printf ("\nDigite o nome do produto: ");
+            gets (aquisicao.nome);
+            
+            do {
+                printf ("Digite a quantidade adquirida: ");
+                scanf ("%d", &aquisicao.quantidade);
+
+                if (aquisicao.quantidade > 100) {
+                    printf ("\nQuantidade solicitada estar indisponível! Por favor, escolha uma quantidade menor\n\n"); }
+
+                if (aquisicao.quantidade <= 0) {
+                    printf ("\nQuantidade solicitada estar inválida! Por favor, escolha uma quantidade maior\n\n"); }
+
+            } while (aquisicao.quantidade <= 0 || aquisicao.quantidade > 100);
+
+            printf ("Digite o valor do produto: ");
+            scanf ("%f", &aquisicao.preco);
+
+// Passagem de parâmetro
+
+            acervo = quantidadeProdutos(aquisicao.quantidade);
+            montante = valor_Estoque(aquisicao.preco, aquisicao.quantidade, acervo);
+            break;
 
 // Tela de resultado
 
-                case 2:
-                if (a > 0)  {  
-                    system ("cls || clear");
-                    printf ("AGENDA VIRTUAL BOX! Lista de Contados\n\n");
-                        for (x = 0; x < a; x++) {
-                            printf ("Nome %dº contato: %s\n", x+1, nome[x]);
-                            printf ("Telefone do contato: %s\n", telefone[x]);
-                            printf ("\n");
-                        } 
+        case 2:
+        if (acervo > 0) {
 
-                } else {
-                    system ("cls || clear");
-                    printf ("Não há dados para exibir. SELECIONE a 1º opção para adicionar contatos!\n\n");
-                    menu = 1;
-                break; }
+        titulo ( );
+            printf ("Nome do produto: %s\n", aquisicao.nome);
+            printf ("Quantidade no estoque: %d\n", acervo);
+            printf ("Valor do estoque em produtos: R$ %.2f\n", montante);
+            system ("pause");
+        
+        } else {
+            system ("cls || clear");
+            printf ("Não há dados para exibir. SELECIONE a 1º opção para adicionar informações de venda(s)!\n\n");
+            system ("pause");
+            opcao = 1;
+            
+            break; }
+        
+// Tela de encerramento
 
-                if (menu != 1 && menu != 2) {
-                    default:
-                        system ("cls || clear");
-                        printf ("\nOpção inválida! Escolha novamente\n\n");
-                    break; }
-            }
-                
-    } while (menu != 2);
+        case 3:
+        titulo ( );
+            printf ("Encerrando o algoritmo!");
+            break;
+
+        default:
+            printf ("\nOpção Inválida! Por favor, selecione uma das opções disponíveis\n\n");
+            break;
+        }
+        
+    } while (opcao != 3);
 
     return 0;
 }
